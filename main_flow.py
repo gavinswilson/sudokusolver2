@@ -17,7 +17,7 @@ puzzle.remove_knowns()
 # print(puzzle.get_value(2,2))
 # print(puzzle.get_opts(2,2))
 # puzzle.remove_knowns()
-puzzle.print_grid()
+# puzzle.print_grid()
 # puzzle.print_opts()
 # puzzle.print_regions()
 # mask=np.uint16(puzzle.get_mask())
@@ -25,6 +25,6 @@ puzzle.print_grid()
 # print(np.binary_repr(opts))
 # print(np.binary_repr(mask))
 puzzle.print_opts()
-for i in range(1, 9):
-        for j in range(1, 9):
-                print(np.binary_repr(puzzle.get_opts(i,j)))
+# for i in range(1, 9):
+#         for j in range(1, 9):
+#                 print(np.binary_repr(puzzle.get_opts(i,j)))

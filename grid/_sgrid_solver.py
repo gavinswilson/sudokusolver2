@@ -15,6 +15,7 @@ def remove_knowns(self):
                 clean_column = j
                 for x in range(1, self.rows+1):
                     for y in range(1, self.cols+1):
+                        print("x:", x, " y:", y,"i:", "reg:", self.get_region(x,y), i, " j:", j, " Clean Val:", clean_value, " clean_region:", clean_region)
                         if (x==clean_row) or (y==clean_column) or (self.get_region(x,y)==clean_region):
                             self.remove_knows_from_cell_opts(x,y,clean_value)
 
