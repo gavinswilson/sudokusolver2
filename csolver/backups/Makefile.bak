@@ -4,7 +4,7 @@
 
 
 # change application name here (executable output name)
-TARGET=testapp
+TARGET=sudoku
 
 # compiler
 CC=gcc
@@ -19,19 +19,24 @@ PTHREAD=-pthread
 
 CCFLAGS=$(DEBUG) $(OPT) $(WARN) $(PTHREAD) -pipe
 
-GTKLIB=`pkg-config --cflags --libs gtk+-3.0`
+GTKLIB=`pkg-config --libs gtk+-3.0`
+GTKFLAGS=`pkg-config --cflags gtk+-3.0`
 
 # linker
 LD=gcc
 LDFLAGS=$(PTHREAD) $(GTKLIB) -export-dynamic
-COBJ=graphics.c
-OBJS=graphics.o
+COBJS=main.c window.c file.c
+OBJS=main.o
 
 $(TARGET):$(OBJS)
-	$(LD) -o $(TARGET) $(OBJS) $(GTKLIB)
+	$(LD) $(GTKFLAGS) $(COBJS) $(GTKLIB) -o $(TARGET)
 
-$(OBJS):$(COBJ)
-	$(CC) -c $(CCFLAGS) $(COBJ) $(GTKLIB) -o $(OBJS)
+# window.o: window.c
+# 	$(CC) -c $(CCFLAGS) window.c window.o $(GTKLIB) -o window.o
+
+# $(OBJS):$(COBJ)
+# 	$(CC) -c $(CCFLAGS) $(COBJ) $(GTKLIB) -o $(OBJS)
+
 
 clean:
 	rm -f *.o $(TARGET)
